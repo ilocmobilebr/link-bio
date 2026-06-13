@@ -8,8 +8,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Bruna Rocha - Cantora Gospel',
-  description: 'Bruna Rocha | Cantora Gospel · Louvor & Adoração. Conheça minhas músicas e ministrações em YouTube, Instagram e Spotify.',
+  title: 'iLoc Mobile | Tecnologia & Mobilidade',
+  description: 'Soluções em Tecnologia e Mobilidade. Conheça nossos serviços e entre em contato.',
   generator: 'v0.app',
   icons: {
     icon: [

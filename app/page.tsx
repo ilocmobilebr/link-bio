@@ -1,153 +1,159 @@
 'use client'
 
-import { Youtube, Instagram, Music } from 'lucide-react'
+import { Globe, Instagram, MessageCircle, Smartphone, Lock, Unlock, ShieldCheck, ShieldAlert } from 'lucide-react'
 import Image from 'next/image'
 import { useState } from 'react'
-// Usaremos a tipografia do projeto padrão para o subtítulo (mesmo estilo de "Cantora Gospel")
+
 
 export default function Home() {
   const [hoveredButton, setHoveredButton] = useState<string | null>(null)
-  const [imageLoaded, setImageLoaded] = useState(false)
 
-  const platforms = [
+  const links = [
     {
-      id: 'youtube',
-      name: 'YouTube',
-      icon: '/youtube.png',
-      url: 'https://www.youtube.com/@brunarochaoficial',
+      id: 'site',
+      name: 'Site Oficial',
+      description: 'Conheça nossos serviços',
+      icon: Globe,
+      url: 'https://www.ilocmobile.com.br/?utm_source=qrcode',
+      primary: true,
     },
     {
       id: 'instagram',
       name: 'Instagram',
-      icon: '/instagram.png',
-      url: 'https://www.instagram.com/bruna_rocha_oficial',
+      description: 'Acompanhe as novidades',
+      icon: Instagram,
+      url: 'https://www.instagram.com/ilocmobile?utm_source=qrcode',
+      primary: false,
     },
     {
-      id: 'spotify',
-      name: 'Spotify',
-      icon: '/spotify.png',
-      url: 'https://open.spotify.com/intl-pt/artist/0YXWhZ8L0f3q5TiMaGU7qc?si=w_Psyt5RR6qCGn650G_sTQ',
+      id: 'whatsapp',
+      name: 'WhatsApp',
+      description: 'Fale com nosso time de vendas',
+      icon: MessageCircle,
+      url: 'https://wa.me/5511971447220?text=Olá!%20Vim%20através%20do%20QR%20Code.',
+      primary: false,
     },
   ]
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden">
-      {/* Enhanced Gradient Background */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f1a] via-[#0f1825] to-[#1a3a3a]" />
-        {/* Subtle animated glow effects */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl soft-glow" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl soft-glow" style={{ animationDelay: '1s' }} />
+    <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden bg-black selection:bg-iloc-lime selection:text-black">
+      {/* Background Premium Abstract Glow */}
+      <div className="fixed inset-0 -z-10 bg-[#050505]">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-[500px] bg-iloc-lime/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-zinc-800/20 rounded-full blur-[100px] pointer-events-none" />
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5 pointer-events-none" />
+        
+        {/* Animated Tech / Security Icons */}
+        <div className="tech-icon-container">
+          <Lock className="tech-icon ti-1 w-8 h-8" />
+          <Smartphone className="tech-icon ti-2 w-10 h-10" />
+          <ShieldCheck className="tech-icon ti-3 w-12 h-12" />
+          <Unlock className="tech-icon ti-4 w-8 h-8" />
+          <ShieldAlert className="tech-icon ti-5 w-6 h-6" />
+        </div>
       </div>
 
-      {/* Main Card Container */}
-      <div className="w-full max-w-md mx-auto px-4 py-8">
-        <div className="card-premium rounded-2xl backdrop-blur-xl p-8 relative group overflow-hidden">
+      {/* Main Container */}
+      <div className="w-full max-w-md mx-auto px-4 py-12 relative z-10">
+
+        <div className="card-premium rounded-3xl p-8 relative group overflow-hidden mt-8">
           {/* Top glow accent line */}
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent" />
-          
-          {/* Animated glow on hover */}
-          <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 transition-opacity duration-700 bg-radial pointer-events-none" style={{
-            background: 'radial-gradient(circle at 50% -20%, rgba(16, 185, 129, 0.2), transparent 70%)'
-          }} />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-iloc-lime/40 to-transparent" />
 
-          <div className="relative z-10">
-            {/* Profile Image with Breathing Ring */}
-            <div className="mb-8 flex justify-center">
-              <div className="relative w-36 h-36">
-                {/* Outer animated ring */}
-                <div className="absolute inset-0 rounded-full ring-2 ring-emerald-500/40 breathing-ring" />
-                
-                {/* Circular gradient background like stage lighting */}
-                <div className="absolute inset-0 rounded-full opacity-60 bg-gradient-conic from-emerald-500/30 via-teal-500/20 to-emerald-500/30" />
-                
-                {/* Inner image container */}
-                <div className="absolute inset-1.5 rounded-full overflow-hidden shadow-2xl bg-gradient-to-br from-emerald-900/20 to-teal-900/20">
-                  {!imageLoaded && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center text-white text-3xl font-bold">
-                      BR
-                    </div>
-                  )}
-                  <Image
-                    src="/bru.jpg"
-                    alt="Bruna Rocha"
-                    fill
-                    className="object-cover"
-                    priority
-                    onLoad={() => setImageLoaded(true)}
-                  />
-                {/* Musical notes animation */}
-                <div className="notes-container pointer-events-none" aria-hidden>
-                  <span className="note n1">♪</span>
-                  <span className="note n2">♪</span>
-                  <span className="note n3">♪</span>
-                  <span className="note n4">♪</span>
-                  <span className="note n5">♪</span>
-                </div>
-                </div>
+          <div className="relative z-10 flex flex-col items-center">
+            
+            {/* Logo Centralizada (Substitui o Avatar Redondo) */}
+            <div className="mb-8 relative group cursor-default w-full flex justify-center">
+              <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-iloc-lime/10 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="relative w-48 h-20 flex items-center justify-center">
+                <Image
+                  src="/full-logo-white.webp"
+                  alt="iLoc Mobile"
+                  fill
+                  className="object-contain"
+                  priority
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.parentElement!.innerHTML = '<span class="text-white font-bold text-2xl">iLoc Mobile</span>';
+                  }}
+                />
               </div>
             </div>
 
-            {/* Header Text - Refined Typography Hierarchy */}
-            <div className="text-center mb-8">
-              <h1 className="text-4xl font-bold text-white mb-2 tracking-tight flex items-center justify-center">
-                <span>Bruna Rocha</span>
-                <span className="ml-0 inline-flex items-center justify-center w-10 h-10 overflow-visible" style={{ marginLeft: -8, transform: 'translateY(2px)' }}>
-                  <Image src="/Instagram-Verified.png" alt="Verified" width={40} height={40} style={{ objectFit: 'contain' }} />
-                </span>
+            {/* Header Text */}
+            <div className="text-center mb-10 w-full">
+              <h1 className="text-3xl font-extrabold text-white mb-3 tracking-tight">
+                iLoc Mobile
               </h1>
-              <p className="text-emerald-400/90 text-xs font-semibold uppercase tracking-widest mb-4 opacity-80">
-                Cantora Gospel
-              </p>
-              <p className="text-emerald-400/90 text-xs font-semibold uppercase tracking-widest mb-4 opacity-80">
-                Acompanhe o Lançamento do novo Single em todas as plataformas digitais.
-              </p>
-              {/* Capa do novo single (public/capa.*) */}
-              <div className="mt-6 flex justify-center">
-                <a
-                  href="https://www.youtube.com/@brunarochaoficial"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="Abrir no YouTube"
-                  className="w-64 md:w-80 rounded-2xl overflow-hidden shadow-2xl transform-gpu transition-transform duration-700 hover:scale-105 animate-release block"
-                >
-                  <Image src="/capa-ao-caminho.jpg" alt="Capa do single" width={800} height={800} className="w-full h-auto object-cover" />
-                </a>
+              <div className="inline-flex items-center px-4 py-1.5 rounded-full bg-iloc-lime/10 border border-iloc-lime/20 text-iloc-lime text-xs font-semibold uppercase tracking-widest gap-2">
+                <Smartphone className="w-4 h-4" />
+                <span>Tecnologia & Mobilidade</span>
               </div>
             </div>
 
-            {/* Platform Buttons - Premium Interactions */}
-            <div className="space-y-2.5">
-              {platforms.map((platform) => {
-                const Icon = platform.icon
-                const isHovered = hoveredButton === platform.id
+            {/* Links / Buttons */}
+            <div className="w-full space-y-4">
+              {links.map((link) => {
+                const Icon = link.icon
+                const isHovered = hoveredButton === link.id
+                const isPrimary = link.primary
+
                 return (
                   <a
-                    key={platform.id}
-                    href={platform.url}
+                    key={link.id}
+                    href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onMouseEnter={() => setHoveredButton(platform.id)}
+                    onMouseEnter={() => setHoveredButton(link.id)}
                     onMouseLeave={() => setHoveredButton(null)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl backdrop-blur-sm text-white font-medium text-sm transition-all duration-300 ${isHovered ? 'shadow-xl scale-101' : 'shadow-md'}`}
+                    className={`
+                      relative flex items-center p-4 rounded-2xl w-full transition-all duration-300 group overflow-hidden button-micro
+                      ${isPrimary 
+                        ? 'bg-iloc-lime text-black shadow-[0_0_20px_rgba(204,255,0,0.2)] hover:shadow-[0_0_30px_rgba(204,255,0,0.4)] font-bold' 
+                        : 'glass-panel text-white hover:bg-white/10 font-medium'
+                      }
+                    `}
                   >
-                    <span className="flex items-center justify-center w-10 h-10 rounded-lg">
-                      <img src={platform.icon} alt={`${platform.name} logo`} className="w-full h-full object-contain" />
-                    </span>
-                    <span className="flex-1 text-left">{platform.name}</span>
-                    <span className="text-xs opacity-70">Abrir</span>
+                    {/* Hover subtle glow effect inside button */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                    
+                    <div className={`
+                      flex items-center justify-center w-12 h-12 rounded-xl mr-4 transition-colors
+                      ${isPrimary ? 'bg-black/10' : 'bg-white/5'}
+                    `}>
+                      <Icon className={`w-6 h-6 ${isPrimary ? 'text-black' : 'text-iloc-lime'}`} />
+                    </div>
+                    
+                    <div className="flex-1 text-left">
+                      <div className="text-base tracking-tight">{link.name}</div>
+                      <div className={`text-xs mt-0.5 opacity-70 font-normal ${isPrimary ? 'text-black/70' : 'text-zinc-400'}`}>
+                        {link.description}
+                      </div>
+                    </div>
+                    
+                    <div className={`
+                      opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300
+                      ${isPrimary ? 'text-black' : 'text-white'}
+                    `}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </div>
                   </a>
                 )
               })}
             </div>
 
-            {/* Spiritual Signature - Reduced Prominence */}
-            <div className="mt-8 pt-6 border-t border-white/5 text-center">
-              <p className="text-gray-500/70 text-xs leading-relaxed tracking-wide">
-               © Bruna Rocha — Todos os direitos reservados.
-              </p>
-            </div>
           </div>
+        </div>
+        
+        {/* Footer */}
+        <div className="mt-8 text-center opacity-50">
+          <p className="text-xs text-white/50">
+            © {new Date().getFullYear()} iLoc Mobile. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </div>
