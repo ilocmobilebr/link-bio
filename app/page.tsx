@@ -2,11 +2,19 @@
 
 import { Globe, Instagram, MessageCircle, Smartphone, Lock, Unlock, ShieldCheck, ShieldAlert } from 'lucide-react'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 export default function Home() {
   const [hoveredButton, setHoveredButton] = useState<string | null>(null)
+  const [showGiftButton, setShowGiftButton] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowGiftButton(true)
+    }, 60000) // 60 segundos
+    return () => clearTimeout(timer)
+  }, [])
 
   const links = [
     {
@@ -82,7 +90,7 @@ export default function Home() {
             </div>
 
             {/* Header Text */}
-            <div className="text-center mb-10 w-full">
+            <div className="text-center mb-8 w-full">
               <h1 className="text-3xl font-extrabold text-white mb-3 tracking-tight">
                 iLoc Mobile
               </h1>
@@ -90,6 +98,46 @@ export default function Home() {
                 <Smartphone className="w-4 h-4" />
                 <span>Tecnologia & Mobilidade</span>
               </div>
+            </div>
+
+            {/* Featured Video */}
+            <div className="w-full mb-10 flex flex-col items-center">
+              <div className="inline-flex items-center gap-2 mb-4">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.6)]" />
+                <h2 className="text-white text-[13px] md:text-sm font-extrabold tracking-wide text-center uppercase opacity-95 leading-relaxed">
+                  A <span className="text-black bg-iloc-lime px-1.5 py-0.5 rounded-md shadow-sm">melhor oportunidade</span> de 2026<br/> pra quem <span className="text-iloc-lime underline decoration-iloc-lime/50 underline-offset-4">vende iPhones</span>
+                </h2>
+              </div>
+              <div className="w-full max-w-[280px] rounded-[2rem] overflow-hidden shadow-[0_0_40px_rgba(204,255,0,0.15)] border border-iloc-lime/30 aspect-[9/16] relative bg-zinc-900 group">
+                <div className="absolute inset-0 bg-gradient-to-t from-iloc-lime/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
+                
+                {/* Overlays de proteção para impedir clique fora (redirecionamento do YouTube) */}
+                <div className="absolute top-0 left-0 w-full h-16 z-20 bg-transparent" /> {/* Bloqueia o título superior */}
+                <div className="absolute bottom-0 right-0 w-16 h-12 z-20 bg-transparent" /> {/* Bloqueia a logo inferior direita */}
+
+                <iframe
+                  src="https://www.youtube.com/embed/93Raq4Bi-2g?rel=0&modestbranding=1&fs=0&disablekb=1&controls=1"
+                  title="A melhor oportunidade de 2026 pra quem vende iPhones"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  className="absolute top-0 left-0 w-full h-full z-0"
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Botão de Presente (Aparece após 60s) */}
+            <div className={`w-full transition-all duration-1000 overflow-hidden ${showGiftButton ? 'max-h-[100px] opacity-100 mb-8 scale-100' : 'max-h-0 opacity-0 mb-0 scale-95 pointer-events-none'}`}>
+              <a
+                href="https://wa.me/5511971447220?text=Olá,%20vim%20pelo%20QRCODE%20quero%20implementar%20a%20iLoc%20na%20minha%20empresa."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative flex items-center justify-center p-4 rounded-2xl w-full bg-iloc-lime text-black font-extrabold text-[15px] md:text-base uppercase tracking-widest shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_40px_rgba(204,255,0,0.5)] hover:-translate-y-1 transition-all duration-300 group overflow-hidden animate-pulse hover:animate-none"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                <span className="relative z-10 flex items-center gap-3">
+                  <MessageCircle className="w-6 h-6 animate-bounce" />
+                  RECEBER PRESENTE
+                </span>
+              </a>
             </div>
 
             {/* Links / Buttons */}
