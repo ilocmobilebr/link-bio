@@ -116,7 +116,7 @@ export default function Home() {
                 <div className="absolute bottom-0 right-0 w-16 h-12 z-20 bg-transparent" /> {/* Bloqueia a logo inferior direita */}
 
                 <iframe
-                  src="https://www.youtube.com/embed/93Raq4Bi-2g?rel=0&modestbranding=1&fs=0&disablekb=1&controls=1"
+                  src="https://www.youtube.com/embed/1BnWIq_p-h8?rel=0&modestbranding=1&fs=0&disablekb=1&controls=1"
                   title="A melhor oportunidade de 2026 pra quem vende iPhones"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   className="absolute top-0 left-0 w-full h-full z-0"
