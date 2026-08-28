@@ -135,7 +135,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-[100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <span className="relative z-10 flex items-center gap-3">
                   <MessageCircle className="w-6 h-6 animate-bounce" />
-                  RECEBER PRESENTE
+                  ENTRAR EM CONTATO
                 </span>
               </a>
             </div>
