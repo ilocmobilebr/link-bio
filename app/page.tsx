@@ -127,7 +127,7 @@ export default function Home() {
             {/* Botão de Presente (Aparece após 60s) */}
             <div className={`w-full transition-all duration-1000 overflow-hidden ${showGiftButton ? 'max-h-[100px] opacity-100 mb-8 scale-100' : 'max-h-0 opacity-0 mb-0 scale-95 pointer-events-none'}`}>
               <a
-                href="https://wa.me/5511971447220?text=Olá,%20vim%20pelo%20QRCODE%20quero%20implementar%20a%20iLoc%20na%20minha%20empresa."
+                href="https://wa.me/5511971447220?text=Olá,%20vim%20pelo%20QRCODE%20quero%20implementar%20a%20iLoc%20na%20minha%20empresa%erecebero%20presente."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="relative flex items-center justify-center p-4 rounded-2xl w-full bg-iloc-lime text-black font-extrabold text-[15px] md:text-base uppercase tracking-widest shadow-[0_0_20px_rgba(204,255,0,0.3)] hover:shadow-[0_0_40px_rgba(204,255,0,0.5)] hover:-translate-y-1 transition-all duration-300 group overflow-hidden animate-pulse hover:animate-none"
